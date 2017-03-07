@@ -12,7 +12,7 @@ class Response
     * Properties
     *
     */
-    private $headers;       // Set all headers to send
+    private $headers = [];  // Set all headers to send
     private $statusCode;    // Set statuscode to use
     private $body;          // Body to send with response
 
@@ -43,7 +43,7 @@ class Response
      *
      * @return $this
      */
-    public function setHeader($header)
+    public function addHeader($header)
     {
         $this->headers[] = $header;
     }
@@ -82,7 +82,9 @@ class Response
 
         $this->checkIfHeadersAlreadySent();
 
-        header($statusHeader[$this->statusCode]);
+        if (isset($statusHeader[$this->statusCode])) {
+            header($statusHeader[$this->statusCode]);
+        }
 
         foreach ($this->headers as $header) {
             header($header);
@@ -98,11 +100,12 @@ class Response
      *
      * @param string $body
      *
-     * @return void
+     * @return this
      */
     public function setBody($body)
     {
         $this->body = $body;
+        return $this;
     }
 
 

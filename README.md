@@ -8,6 +8,7 @@ Anax Response
 [![Build Status](https://scrutinizer-ci.com/g/canax/response/badges/build.png?b=master)](https://scrutinizer-ci.com/g/canax/response/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/canax/response/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/canax/response/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/canax/response/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/canax/response/?branch=master)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/eeb9a3c9-f094-41db-9633-1197e2e8e43e/mini.png)](https://insight.sensiolabs.com/projects/eeb9a3c9-f094-41db-9633-1197e2e8e43e)
 
 Anax Response moduler.
 
