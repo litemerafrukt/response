@@ -98,13 +98,22 @@ class Response
     /**
      * Set the body.
      *
-     * @param string $body
+     * @param callable|string $body either a string or a callable that
+     *                              can generate the body.
      *
      * @return this
      */
     public function setBody($body)
     {
-        $this->body = $body;
+        if (is_string($body)) {
+            $this->body = $body;
+        } elseif (is_callable($body)) {
+            ob_start();
+            $res1 = call_user_func($body);
+            $res2 = ob_get_contents();
+            $this->body = $res2 . $res1;
+            ob_end_clean();
+        }
         return $this;
     }
 
