@@ -165,7 +165,7 @@ class Response
 
         $this->addHeader("Content-Type: application/json; charset=utf8");
         $this->sendHeaders();
-        echo json_encode($data, JSON_PRETTY_PRINT | JSON_PRESERVE_ZERO_FRACTION);
+        echo json_encode($data, JSON_PRETTY_PRINT);
     }
 
 
