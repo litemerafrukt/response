@@ -1,6 +1,12 @@
 Revision history
 =================================
 
+v1.0.5 (2017-04-12)
+---------------------------------
+
+* Do not send headers if they are already sent, silently fail on send() and sendJson().
+
+
 v1.0.4 (2017-03-13)
 ---------------------------------
 
