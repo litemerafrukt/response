@@ -23,7 +23,7 @@ class Response
      *
      * @param string $header type of header to set
      *
-     * @return $this
+     * @return self
      */
     public function setStatusCode($value)
     {
@@ -32,6 +32,8 @@ class Response
             throw new Exception("Unsupported statuscode: $value");
         }
         $this->statusCode = $value;
+
+        return $this;
     }
 
 
@@ -41,11 +43,13 @@ class Response
      *
      * @param string $header type of header to set
      *
-     * @return $this
+     * @return self
      */
     public function addHeader($header)
     {
         $this->headers[] = $header;
+
+        return $this;
     }
 
 
@@ -101,7 +105,7 @@ class Response
      * @param callable|string $body either a string or a callable that
      *                              can generate the body.
      *
-     * @return this
+     * @return self
      */
     public function setBody($body)
     {
@@ -117,7 +121,20 @@ class Response
         return $this;
     }
 
+    /**
+     * Set body to json from data and add content json to header.
+     *
+     * @param mixed data - data to be encoded to json
+     *
+     * @return self
+     */
+    public function setJson($data)
+    {
+        $this->addHeader("Content-Type: application/json; charset=utf8");
+        $this->body = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
+        return $this;
+    }
 
     /**
      * Get the body.
@@ -128,8 +145,6 @@ class Response
     {
         return $this->body;
     }
-
-
 
     /**
      * Send response with an optional statuscode.
